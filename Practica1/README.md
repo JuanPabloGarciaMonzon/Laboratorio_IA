@@ -68,4 +68,4 @@
 
 
 ### Programación en bloques
-![](imagenes\Main.jpg)
+![](imagenes\flow_diagram.png)
