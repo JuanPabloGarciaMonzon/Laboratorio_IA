@@ -32,7 +32,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="30">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="60">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -63,6 +63,7 @@
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.Word</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -329,7 +330,7 @@
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="ahuevo" DisplayName="Send SMTP Mail Message" Email="pablo2011euro@gmail.com" EnableSSL="True" sap:VirtualizedContainerService.HintSize="360,150" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Password="elalmadelbonzai2018" Port="465" SecureConnection="Auto" Server="smtp.gmail.com" Subject="ahuevo" To="pablo2011euro@gmail.com">
+                              <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[string.Format(&quot;Se adjuntan la constancia de vacunación y el tablero de vacunación nacional {0}actualizado&quot;, Environment.NewLine)]" DisplayName="Send SMTP Mail Message" Email="pablo2011euro@gmail.com" EnableSSL="True" sap:VirtualizedContainerService.HintSize="360,150" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Password="elalmadelbonzai2018" Port="465" SecureConnection="Auto" Server="smtp.gmail.com" Subject="IA_Practica1_201222615" To="pablo2011euro@gmail.com">
                                 <ui:SendMail.Files>
                                   <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
                                     <InArgument x:TypeArguments="x:String">C:\Users\jp_gm\Downloads\constancia_vacunacion.pdf</InArgument>
