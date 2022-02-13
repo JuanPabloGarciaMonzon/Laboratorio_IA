@@ -14,7 +14,7 @@
 
 ## El siguiente diagrama de flujo muestra como es el proceso de la tarea automatizada:
 
-![](imagenes\flow_diagram.png)
+![](imagenes/flow_diagram.png)
 
 
 ## A continuación la explicación de trasladar este diagrama a nuestra programacón de bloques que nos proporciona el S.O UiPath.
@@ -68,4 +68,4 @@
 
 
 ### Programación en bloques
-![](imagenes\flow_diagram.png)
+![](imagenes/flow_diagram.png)
