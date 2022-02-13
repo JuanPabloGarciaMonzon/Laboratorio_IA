@@ -68,4 +68,4 @@
 
 
 ### Programación en bloques
-![](imagenes\Main.png)
+![](imagenes\Main.jpg)
