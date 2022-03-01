@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1240,6818" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:uasb="clr-namespace:UiPath.Activities.System.Binding;assembly=UiPath.System.Activities" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1240,6695" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:uasb="clr-namespace:UiPath.Activities.System.Binding;assembly=UiPath.System.Activities" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
       <x:String>System.Activities</x:String>
@@ -63,7 +63,6 @@
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.Word</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -71,7 +70,7 @@
       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <ueab:SequenceX DisplayName="Single Excel Process Scope" sap:VirtualizedContainerService.HintSize="1168,6753" sap2010:WorkflowViewState.IdRef="SequenceX_1">
+  <ueab:SequenceX DisplayName="Single Excel Process Scope" sap:VirtualizedContainerService.HintSize="1168,6630" sap2010:WorkflowViewState.IdRef="SequenceX_1">
     <ueab:SequenceX.Variables>
       <Variable x:TypeArguments="ue:IWorkbookQuickHandle" Default="[new WorkbookQuickHandle(workbookPath:=&quot;Project_Notebook.xlsx&quot;,visible:=True,autoSave:=False,createNew:=True,readOnly:=False,isWorkspace:=True)]" Name="Notes" />
       <Variable x:TypeArguments="uasb:BindingsRepository" Default="[new UiPath.Activities.System.Binding.BindingsRepository()]" Name="Saved" />
@@ -81,13 +80,13 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Group" sap:VirtualizedContainerService.HintSize="1126,6663" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence DisplayName="Group" sap:VirtualizedContainerService.HintSize="1126,6540" sap2010:WorkflowViewState.IdRef="Sequence_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="1086,6546" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_2" WorkbookPath="[string.Format(&quot;{0}\Escritorio\PRIMER SEMESTRE 2022\IA\IA\Laboratorio_IA\Practica1\info.xlsx&quot;, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile))]">
+      <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="1086,6423" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_2" WorkbookPath="[string.Format(&quot;{0}\Escritorio\PRIMER SEMESTRE 2022\IA\IA\Laboratorio_IA\Practica1\info.xlsx&quot;, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile))]">
         <ueab:ExcelApplicationCard.Body>
           <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
             <ActivityAction.Argument>
@@ -98,7 +97,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1074,6275" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1074,6152" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -120,7 +119,7 @@
                   <InArgument x:TypeArguments="ue:ExcelValue">[Excel.Sheet("Hoja1").Cell("B2")]</InArgument>
                 </Assign.Value>
               </Assign>
-              <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Vacunación" sap:VirtualizedContainerService.HintSize="1032,5943" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="7d5cd488-20f7-4d92-b00f-f4dcca01576a" Version="V1">
+              <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Vacunación" sap:VirtualizedContainerService.HintSize="1032,5820" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="7d5cd488-20f7-4d92-b00f-f4dcca01576a" Version="V1">
                 <uix:NApplicationCard.Body>
                   <ActivityAction x:TypeArguments="x:Object">
                     <ActivityAction.Argument>
@@ -131,7 +130,7 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1020,5722" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1020,5599" sap2010:WorkflowViewState.IdRef="Sequence_3">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -152,15 +151,14 @@
                           <uix:TargetAnchorable BrowserURL="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6Lf9Tz8aAAAAAF2SwORDM_AaaUTPyP885ri8xP70&amp;co=aHR0cHM6Ly9yZWdpc3Ryb3ZhY3VuYWNvdmlkLm1zcGFzLmdvYi5ndDo0NDM.&amp;hl=en&amp;v=1B_yv3CBEV10KtI2HJ6eEXhJ&amp;size=normal&amp;cb=ov58511yd0wh" DesignTimeRectangle="682, 421, 26, 26" FriendlyName="'DIV'" FullSelectorArgument="&lt;webctrl name='a-5ow4aeykp5ax' tag='IFRAME' /&gt;&lt;webctrl aria-role='presentation' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl name='a-5ow4aeykp5ax' tag='IFRAME' /&gt;&lt;webctrl aria-role='presentation' tag='DIV' type='' aaname='' /&gt;" Guid="3919a87c-8d29-492e-924a-159743bf9383" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABSSURBVEhL7daxCQAwCETR7L+VcziJIBisk+ow1+Q+WAV8pVkRUYzhQ+5eZjY6vfOA+iEza6re1Tuv0HSC4ATBCYITBCcI7iOIcsppn5PXQ4KiNu9IPJNroSw8AAAAAElFTkSuQmCC" InformativeScreenshot="6eb58c321a5bada38f0612afca82d6c4.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Vacunación' /&gt;" SearchSteps="FuzzySelector, Image" />
                         </uix:NClick.Target>
                       </uix:NClick>
-                      <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State" sap:VirtualizedContainerService.HintSize="978,927" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="7d5cd488-20f7-4d92-b00f-f4dcca01576a" Version="V1">
+                      <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State" sap:VirtualizedContainerService.HintSize="978,804" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="7d5cd488-20f7-4d92-b00f-f4dcca01576a" Version="V1">
                         <uix:NCheckState.IfExists>
-                          <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="452,712" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                          <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="452,589" sap2010:WorkflowViewState.IdRef="Sequence_10">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="412,83" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[string.Format(&quot;PUTA NO AQUI&quot;)]" />
                             <uix:NClick ClickType="Single" DisplayName="Click" sap:VirtualizedContainerService.HintSize="412,155" sap2010:WorkflowViewState.IdRef="NClick_18" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7d5cd488-20f7-4d92-b00f-f4dcca01576a" Version="V1">
                               <uix:NClick.Target>
                                 <uix:TargetAnchorable DesignTimeRectangle="796, 625, 40, 39" ElementType="Button" FriendlyName="" FullSelectorArgument="&lt;ctrl name='Vacunación' role='document' /&gt;&lt;ctrl name='recaptcha challenge expires in two minutes' role='document' /&gt;&lt;ctrl name='reCAPTCHA' role='document' /&gt;&lt;ctrl name='Solve the challenge' role='push button' /&gt;" FuzzySelectorArgument="&lt;ctrl name='Vacunación' role='document' /&gt;&lt;ctrl name='recaptcha challenge expires in two minutes' role='document' /&gt;&lt;ctrl name='reCAPTCHA' role='document' /&gt;&lt;ctrl name='Solve the challenge' role='push button' automationid='' /&gt;" Guid="61f98323-f2ea-4829-9e1a-a55682df67fe" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACwAAAArCAYAAAADgWq5AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFYSURBVFhH7ZSxSgNBEIZ9xryF72AgT2CTF5B06SRYSqy0NF0gaYQUAVGwEsuRn+zIsOzmdjMzGHE++Dnubovv5mbmgv4YIexNCHsTwt6EsDch7M0/Fd49Ed1fES0uD3m8Jvp8Sy9t0QtDjkXzbO7SITt0wqhsSVTGuNI64WPV5eCjDNEJlwTzrGbpsA06YTlotRj3sU4Y1StJypyVMAbqWJXxzhidMMh3MAcD+b5Nh+zQCwNUGr8eLYIYbwaJjfCJvH590HK/Sndt/JowZMfPNzRaTmj+8pCeDqMTxq/nVkDPopdxHdi9UhbpqXK/MPoVQrXtMLAZNLKgTxhTX5LkCFkWw5XRyoJ2YVS2JMnJZFmKpS1kQbsw2qAkKiPWGQZJSlvIgnbhWs/mqUhbyAJ7YURIT9e3P7I966tGuzDWV08EkEYsaBc+E0LYmxD2JoS9CWFvQtgXom+VAcb0Z6FKJQAAAABJRU5ErkJggg==" InformativeScreenshot="9a5dcd134d87882bfc723bf2851ed916.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Vacunación - Google Chrome' /&gt;" SearchSteps="Selector, FuzzySelector, Image" SelectionStrategy="AA" />
@@ -180,14 +178,13 @@
                           </Sequence>
                         </uix:NCheckState.IfExists>
                         <uix:NCheckState.IfNotExists>
-                          <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="400,434" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                          <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="400,311" sap2010:WorkflowViewState.IdRef="Sequence_11">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="360,83" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[string.Format(&quot;AQUI SI CUANDO NO APAREZCA ESA MIERDA&quot;)]" />
                             <uix:NClick ClickType="Single" DisplayName="Click 'Buscar Datos'" sap:VirtualizedContainerService.HintSize="360,192" sap2010:WorkflowViewState.IdRef="NClick_21" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7d5cd488-20f7-4d92-b00f-f4dcca01576a" Version="V1">
                               <uix:NClick.Target>
                                 <uix:TargetAnchorable BrowserURL="https://registrovacunacovid.mspas.gob.gt/mspas/citas/consulta" DesignTimeRectangle="392, 486, 410, 31" ElementType="Button" FriendlyName="'Buscar Datos'" FullSelectorArgument="&lt;webctrl tag='BUTTON' type='submit' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' type='submit' aaname='Buscar Datos' check:text='Buscar Datos' /&gt;" Guid="5258a976-b5ec-4c97-9424-572f96035acd" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAZ4AAAAjCAYAAACkX2wQAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAS9SURBVHhe7ZpBixxFHMXnC4R8hvkI+xX2OMc9ztVjjnPcnJIcF0+DiKzkIEsQGTzIQjCOhCATRJwcxJEgLiLiiIgTCDKISPleT/97a2aa1bC77XT8Pfgx3VXVVdWwW49X1Z2EEEIINSiMByGEUKNaM57bj1K6cUeFhwAAAJfHnmJvyVUZjytu3t1+CAAA4DLYW3LzqYyHpAMAANeFPSZUGU9dQwAAgKsihPEAAEAjhDAeAABohBDGAwAAjRDCeAAAoBFCGA8AADRCCOMBAIBGCGE8AADQCCGMB1rH/sOUTp6dc/hefbv/grW5PU2p91Z9O4D/IyGMB1rH4LuUlr+sFveRrud/prT4tr5t0+Rzm+h3+VdKsy/r266hNknta+sAXhNCGA+0Di/uC1GVfaoFfqlyX7+Z0sGDlLpRp8TRzxJR992UhjKF4ccp7UUbsTdK6Vjl9/QbZe7rjccykS/0myWXPfXnJLP3keqeZGOJzbl1lYAWMp/TrN+exrYxDTSXosxz/Er/hL/q94MsJWn8gVKTk9O+ruN5E8lql9IewD8RwnigdWwu7v2v9QesRXvf96eqCxMyeZJwndLRRIv8WGXzb1blA6WlpPLZzymd6dmJjKzzju5VdqaymZOLro/vr9of+1mxeKk6jV30XbJliuJEc4uxxr+vnvVYNqSx5tT5ROOoPP2xKh/pviND8fhF2xi/NBnPd/lC7fQeMz13+uGqHGDXCWE80Dq8uCct2kst1F6QbRonsfheYDy3vGD/uJ5QOkoic/V1UpMculnKGP2mRV7Jx9c2Hhtdr6zLqTOevCzv894PKi+3CIt3KudpCnN7vt42/bS6tnlNPzuvA2gLIYwHWsfm4t57rPvYzroo8chcpqpLTglPy60218tE1syoxFtpYycTtc/PamwKm+YS1BnPkQyjMp73ZWLfy1Q0D6evKN80nrHqxw/P7zsymlS+V09z9/su1H6Ybw0C7DghjAdaR93ibjMojOEi4ynx+cjkxSr9FPVKM8U2XUZXC73PjWJhr/ovr1/FeCZKZlOZRZGuZDYjjW+jy9vWGU+x5Vfed5S2bJi34t7nPypzf9MnWTuAHSaE8UDr2FzcnSLOIvEopTgNDMstrSOZSyzobtePrS4t1suXq8N8b7VV6cIH/fc3xtAzpz7PeVXj0XNH3iKTYRRGaJPL0tXQaapsu19+XBB1nvdSSSk+gPA50VJJydd9vWfeLs6PAHadEMYDraNIBzKLOONxMpl8fr4Yj5RmfO7j+ulzLe6l8Rzq2u3nSjj+LVKIynsyBG+lRX8TJwglJxuSt9n8EYG33P6t8cTc/Ouxj+L8SIbmDwaW6nMuxjKNqh+nofK52TPd2+zKeRboemDTfLss1zufObU5ldWcTwHsIiGMB15L9h+ISDc5KjtQytmqK8vzT6yLsvzT7CuitzlOUDOeP90+iM+uM/xZeP8a5gZwnYQwHgAAaIQQxgMAAI0QwngAAKARQhgPAAA0QgjjAQCARghhPAAA0AghjAcAABohVBnPjTvbjQAAAK4Ce0yoMp7bj1K6eXe7MQAAwGWwt9hjQpXxWK4g+QAAwFVhT8lNx1ozHoQQQui6hfEghBBqUCn9De1M53qmfT5nAAAAAElFTkSuQmCC" InformativeScreenshot="7d12ad7cec406ab5da5e2fd61f2aa2b9.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Vacunación' /&gt;" SearchSteps="FuzzySelector, Image" />
@@ -248,7 +245,13 @@
                               </uix:NClick.Target>
                             </uix:NClick>
                             <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="506,80" sap2010:WorkflowViewState.IdRef="Delay_10" />
-                            <uix:NNavigateBrowser Action="CloseTab" DisplayName="Navigate Browser - Close Tab" sap:VirtualizedContainerService.HintSize="506,80" sap2010:WorkflowViewState.IdRef="NNavigateBrowser_2" Version="V1" />
+                            <uix:NNavigateBrowser Action="CloseTab" DisplayName="Navigate Browser - Close Tab" sap:VirtualizedContainerService.HintSize="506,80" sap2010:WorkflowViewState.IdRef="NNavigateBrowser_2" Version="V1">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </uix:NNavigateBrowser>
                             <Sequence DisplayName="Group" sap:VirtualizedContainerService.HintSize="506,2634" sap2010:WorkflowViewState.IdRef="Sequence_13">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -351,7 +354,7 @@
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[string.Format(&quot;Se adjuntan la constancia de vacunación y el tablero de vacunación nacional {0}actualizado&quot;, Environment.NewLine)]" DisplayName="Send SMTP Mail Message" Email="pablo2011euro@gmail.com" EnableSSL="True" sap:VirtualizedContainerService.HintSize="360,150" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Password="elalmadelbonzai2018" Port="465" SecureConnection="Auto" Server="smtp.gmail.com" Subject="IA_Practica1_201222615" To="2564971330101@ingenieria.usac.edu.gt">
+                              <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[string.Format(&quot;Se adjuntan la constancia de vacunación y el tablero de vacunación nacional {0}actualizado&quot;, Environment.NewLine)]" DisplayName="Send SMTP Mail Message" Email="pablo2011euro@gmail.com" EnableSSL="True" sap:VirtualizedContainerService.HintSize="360,150" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Password="elalmadelbonzai2018" Port="465" SecureConnection="Auto" Server="smtp.gmail.com" Subject="IA_Practica1_201222615" To="1693363360101@ingenieria.usac.edu.gt">
                                 <ui:SendMail.Files>
                                   <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
                                     <InArgument x:TypeArguments="x:String">C:\Users\jp_gm\Downloads\constancia_vacunacion.pdf</InArgument>
