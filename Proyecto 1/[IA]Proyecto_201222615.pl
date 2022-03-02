@@ -480,50 +480,22 @@ nl,
 read(Estadia),
 nl,
 
-analisis_presupuesto(Presupuesto,Estrellas),
+analisis_presupuesto(Presupuesto,Estrellas,Habitacion,Clima,Distancia,Vehiculo,Estadia),
 nl.
 %-------------------------------------------------------------------------------------------------------------------
-analisis_presupuesto(P,E,H,C,D,V,E):-(
-    X>=5000->seleccionarhotel(X,Y);
-    X=<2000->fracaso
-    ).
+%PARAMETROS
+%Presupuesto,Estrellas,Habitacion,Clima,Distancia,Vehiculo,Estadia
 
-%EXITO
-seleccionarhotel(X,Y):-
-Resultado is X*Y,
-write(Resultado),
-listing(hotel(A,B,C,T,D,E,F,G)).
-%FRACASO
-fracaso:-nl,
-write('SIGA TRABAJANDO EN SU CALL CENTER PREFERIDO'),
-nl.
+%ANALISIS
+analisis_presupuesto(P,E,H,C,D,V,Est):-
+    seleccionarhotel(E,C,D).
 
-%-------------------------------------------------------------------------------------------------------------------
-analisis_estrellas(X):-
-(
-X==1->unaestrella;
-X==2->dosstrella;
-X==3->tresestrella;
-X==4->cuatroestrella;
-X==5->cincoestrella
-).
-
-unaestrella:-
-write('Sin miedo al exito'),
-nl.
-
-dosestrella:-
-write('Un poquito mejor'),
-nl.
-
-tresestrella:-
-write('Vas perdiendo el color humilde'),
-nl.
-
-cuatroestrella:-
-write('Traiganle una falda'),
-nl.
-
-cincoestrella:-
-write('Caquero'),
-nl.
+seleccionarhotel(EstrellasX,ClimaX,DistanciaX):-
+departamento(Codigo,_,_,_,ClimaR),
+hotel(CodH,Nombre,DistanciaR,EstrellasR,_,_,_,Codigo),
+DistanciaR>=DistanciaX,EstrellasR>=EstrellasX,
+nl,
+write(DistanciaR),
+tab(5),write(Nombre),
+tab(5),write(EstrellasR),
+fail.
