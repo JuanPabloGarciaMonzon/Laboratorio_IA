@@ -52,7 +52,7 @@ departamento(22,sacatepequez,2,espanol,templado).
 %HOTEL
 hotel(1,camino_real,0,4,100,200,50,1).
 hotel(2,holiday_inn,0,4,200,350,75,2).
-hotel(3,hu-nal_ye,260,1,50,100,60,2).
+hotel(3,hu_nal_ye,260,1,50,100,60,2).
 hotel(4,onetwo,288,3,200,350,80,4).
 hotel(5,paradise,40,2,150,250,80,3).
 hotel(6,tikal,350,1,200,350,100,8).
@@ -430,44 +430,47 @@ trabajador(299,carmelo,oficinista,30).
 trabajador(300,lorein,oficinista,31).
 trabajador(301,yulisa,encargado,31).
 %-------------------------------------------------------------------------------------------------------------------
-%HECHOS
-
-
-%REGLAS
-
-
 %MENU
 %-------------------------------------------------------------------------------------------------------------------
-menu:-nl,
-nl,
+menu:-
 write('BOOKING HOTEL'),
 nl,
-write('Responda las siguientes preguntas para un hotel segun su presupuesto'),
+write('Estas son las opciones para poder elegir un hotel'),
 nl,
+write('presupuesto'),
+nl,
+write('clima'),
+nl,
+write('calidad'),
+nl,
+write('Escriba una de las opciones'),
+nl,
+read(Opcion),
+nl,
+analisis_opcion(Opcion).
 
+analisis_opcion(Opcion):-(
+Opcion=='presupuesto'->opcion_presupuesto;
+Opcion=='clima'->opcion_clima;
+Opcion=='calidad'->opcion_calidad
+).
+
+%PRESUPUESTO
+%-------------------------------------------------------------------------------------------------------------------
+opcion_presupuesto:-
 write('Escriba su presupuesto'),
 nl,
 read(Presupuesto),
 nl,
 
-write('Escriba cuantas estrellas de un hotel necesita (1 a 5)'),
+write('Que distancia le interesa (en KM)'),
 nl,
-read(Estrellas),
+read(Distancia),
 nl,
 
 write('Que tipo de habitación necesita (simple o doble)'),
 nl,
 read(Habitacion),
-nl,
-
-write('Que clima le gusta (tropical,calor,frio,templado)'),
-nl,
-read(Clima),
-nl,
-
-write('Que distancia le interesa (en KM)'),
-nl,
-read(Distancia),
 nl,
 
 write('Tiene vehiculo (si o no)'),
@@ -480,22 +483,270 @@ nl,
 read(Estadia),
 nl,
 
-analisis_presupuesto(Presupuesto,Estrellas,Habitacion,Clima,Distancia,Vehiculo,Estadia),
+analisis_presupuesto(Presupuesto,Distancia,Habitacion,Vehiculo,Estadia),
+nl.
+
+%CLIMA
+%-------------------------------------------------------------------------------------------------------------------
+opcion_clima:-nl,
+write('Tipo de clima (tropical,frio, calor, templado)'),
+nl,
+read(Clima),
+nl,
+
+write('Que distancia le interesa (en KM)'),
+nl,
+read(Distancia),
+nl,
+
+write('Que tipo de habitación necesita (simple o doble)'),
+nl,
+read(Habitacion),
+nl,
+
+write('Tiene vehiculo (si o no)'),
+nl,
+read(Vehiculo),
+nl,
+
+write('Dias de estadía'),
+nl,
+read(Estadia),
+nl,
+
+write('Cantidad de estrellas (1 a 5)'),
+nl,
+read(Estrellas),
+nl,
+analisis_clima(Clima,Distancia,Habitacion,Vehiculo,Estadia,Estrellas),
+nl.
+
+%CALIDAD
+%-------------------------------------------------------------------------------------------------------------------
+opcion_calidad:-nl,
+
+write('Cantidad de estrellas (1 a 5)'),
+nl,
+read(Estrellas),
+nl,
+
+write('Tipo de clima (tropical,frio, calor, templado)'),
+nl,
+read(Clima),
+nl,
+
+write('Que distancia le interesa (en KM)'),
+nl,
+read(Distancia),
+nl,
+
+write('Que tipo de habitación necesita (simple o doble)'),
+nl,
+read(Habitacion),
+nl,
+
+write('Tiene vehiculo (si o no)'),
+nl,
+read(Vehiculo),
+nl,
+
+write('Dias de estadía'),
+nl,
+read(Estadia),
+nl,
+analisis_calidad(Clima,Distancia,Habitacion,Vehiculo,Estadia,Estrellas),
 nl.
 %-------------------------------------------------------------------------------------------------------------------
 %PARAMETROS
-%Presupuesto,Estrellas,Habitacion,Clima,Distancia,Vehiculo,Estadia
+%Presupuesto,Distancia,Habitacion,Vehiculo,Estadia
 
-%ANALISIS
-analisis_presupuesto(P,E,H,C,D,V,Est):-
-    seleccionarhotel(E,C,D).
+%ANALISIS PRESUPUESTO
+%-------------------------------------------------------------------------------------------------------------------
+analisis_presupuesto(P,D,H,V,E):-
+    analisis_vehiculo(P,D,H,V,E).
 
-seleccionarhotel(EstrellasX,ClimaX,DistanciaX):-
-departamento(Codigo,_,_,_,ClimaR),
-hotel(CodH,Nombre,DistanciaR,EstrellasR,_,_,_,Codigo),
-DistanciaR>=DistanciaX,EstrellasR>=EstrellasX,
+analisis_vehiculo(Pre,Dist,Hab,Ve,Est):-
+(
+Ve=='si'->analisis_habitacion(Pre,Dist,Hab,Est);
+Ve=='no'->analisis_habitacion_sinv(Pre,Dist,Hab,Est)
+).
+
+analisis_habitacion(Pre,Dist,Hab,Est):-
+(
+ Hab=='simple'->seleccionarhotelsimple(Pre,Dist,Est);
+ Hab=='doble'->seleccionarhoteldoble(Pre,Dist,Est)  
+).
+
+analisis_habitacion_sinv(Pre,Dist,Hab,Est):-
+(
+ Hab=='simple'->seleccionarhotelsimple_sinv(Pre,Dist,Est);
+ Hab=='doble'->seleccionarhoteldoble_sinv(Pre,Dist,Est)  
+).
+%HOTEL CON HABITACION SIMPLE Y CON VEHICULO
+%SELECCIONAR HABITACION SIMPLE
+seleccionarhotelsimple(PreX,DistX,EstX):-
+departamento(CodD,NombD,_,LengD,ClimaX),
+hotel(_,NombH,DistanciaR,EstrellaR,Simple,_,Precio,CodD),
+DistanciaR>=DistX,
+EstrellaR<3,
+Mobilidad is DistanciaR*2.5,
+CostoHotel is (Simple+Precio)*EstX,
+Resultado is Mobilidad+CostoHotel,
 nl,
-write(DistanciaR),
-tab(5),write(Nombre),
-tab(5),write(EstrellasR),
+analisis_precio(PreX,NombD,LengD,ClimaX,DistanciaR,EstrellaR,NombH,Mobilidad,CostoHotel,Resultado),
 fail.
+
+%SELECCIONAR HABITACION DOBLE
+seleccionarhoteldoble(PreX,DistX,EstX):-
+departamento(CodD,NombD,_,LengD,ClimaX),
+hotel(_,NombH,DistanciaR,EstrellaR,_,Doble,Precio,CodD),
+DistanciaR>=DistX,
+EstrellaR<3,
+Mobilidad is DistanciaR*2.5,
+CostoHotel is (Doble+Precio)*EstX,
+Resultado is Mobilidad+CostoHotel,
+nl,
+analisis_precio(PreX,NombD,LengD,ClimaX,DistanciaR,EstrellaR,NombH,Mobilidad,CostoHotel,Resultado),
+fail.
+
+
+
+%HOTEL CON HABITACION SIMPLE Y SIN VEHICULO
+%SELECCIONAR HABITACION SIMPLE
+seleccionarhotelsimple_sinv(PreX,DistX,EstX):-
+departamento(CodD,NombD,_,LengD,ClimaX),
+hotel(_,NombH,DistanciaR,EstrellaR,Simple,_,Precio,CodD),
+DistanciaR>=DistX,
+EstrellaR<3,
+Mobilidad is 0,
+CostoHotel is (Simple+Precio)*EstX,
+Resultado is Mobilidad+CostoHotel,
+nl,
+analisis_precio(PreX,NombD,LengD,ClimaX,DistanciaR,EstrellaR,NombH,Mobilidad,CostoHotel,Resultado),
+fail.
+
+%SELECCIONAR HABITACION DOBLE
+seleccionarhoteldoble_sinv(PreX,DistX,EstX):-
+departamento(CodD,NombD,_,LengD,ClimaX),
+hotel(_,NombH,DistanciaR,EstrellaR,_,Doble,Precio,CodD),
+DistanciaR>=DistX,
+EstrellaR<3,
+Mobilidad is 0,
+CostoHotel is (Doble+Precio)*EstX,
+Resultado is Mobilidad+CostoHotel,
+nl,
+analisis_precio(PreX,NombD,LengD,ClimaX,DistanciaR,EstrellaR,NombH,Mobilidad,CostoHotel,Resultado),
+fail.
+
+
+%ANALISIS DE RESULTADO VS PRESUPUESTO
+analisis_precio(PreX,NombD,LengD,ClimaX,DistanciaR,EstrellaR,NombH,Mobilidad,CostoHotel,Resultado):-
+(Resultado=<PreX->presupuesto_ajustado(NombD,LengD,ClimaX,DistanciaR,EstrellaR,NombH,Mobilidad,CostoHotel,Resultado)).
+
+%LISTADO DE OPCIONES FILTRADAS
+presupuesto_ajustado(NombD,LengD,ClimaX,DistanciaR,EstrellaR,NombH,Mobilidad,CostoHotel,Resultado):-
+write('HOTELES AJUSTADOS A SU PRESUPUESTO'),
+nl,
+format(
+'Departamento: ~a, Lenguaje: ~a,Clima: ~a, Distancia: ~a, 
+Estrellas: ~a, Hotel: ~a, Mobilidad: ~a,
+Costo Hotel: ~a,Resultado: ~a', 
+[NombD,LengD,ClimaX,DistanciaR,EstrellaR,NombH,Mobilidad,CostoHotel,Resultado]
+),
+nl,
+fail.
+%-------------------------------------------------------------------------------------------------------------------
+%ANALISIS CLIMA
+%Clima,Distancia,Habitacion,Vehiculo,Estadia,Estrellas
+%-------------------------------------------------------------------------------------------------------------------
+analisis_clima(C,D,H,V,Es,E):-
+    analisis_vehiculo_cli_cal(C,D,H,V,Es,E).
+
+%-------------------------------------------------------------------------------------------------------------------
+%ANALISIS CALIDAD
+%Clima,Distancia,Habitacion,Vehiculo,Estadia,Estrellas
+analisis_calidad(C,D,H,V,Es,E):-
+    analisis_vehiculo_cli_cal(C,D,H,V,Es,E).
+%-------------------------------------------------------------------------------------------------------------------
+analisis_vehiculo_cli_cal(Cli,Dist,Hab,Ve,Esta,Estr):-
+(
+Ve=='si'->analisis_habitacion_cli_cal(Cli,Dist,Hab,Esta,Estr);
+Ve=='no'->analisis_habitacion_cli_cal_sinv(Cli,Dist,Hab,Esta,Estr)
+).
+
+analisis_habitacion_cli_cal(Cli,Dist,Hab,Esta,Estr):-
+(
+ Hab=='simple'->seleccionarhotelsimple_cli_cal(Cli,Dist,Esta,Estr);
+ Hab=='doble'->seleccionarhoteldoble_cli_cal(Cli,Dist,Esta,Estr)  
+).
+
+analisis_habitacion_cli_cal_sinv(Cli,Dist,Hab,Esta,Estr):-
+(
+ Hab=='simple'->seleccionarhotelsimple_cli_cal_sinv(Cli,Dist,Esta,Estr);
+ Hab=='doble'->seleccionarhoteldoble_cli_cal_sinv(Cli,Dist,Esta,Estr)  
+).
+%HOTEL CON HABITACION SIMPLE Y CON VEHICULO
+%SELECCIONAR HABITACION SIMPLE
+seleccionarhotelsimple_cli_cal(ClimaX,DistX,EstaX,EstreX):-
+departamento(CodD,NombD,_,LengD,ClimaX),
+hotel(_,NombH,DistanciaR,EstreX,Simple,_,Precio,CodD),
+DistanciaR>=DistX,
+Mobilidad is DistanciaR*2.5,
+CostoHotel is (Simple+Precio)*EstaX,
+Resultado is Mobilidad+CostoHotel,
+nl,
+hoteles_filtrados_cli_cal(NombD,LengD,ClimaX,DistanciaR,EstreX,NombH,Mobilidad,CostoHotel,Resultado),
+fail.
+
+%SELECCIONAR HABITACION DOBLE
+seleccionarhoteldoble_cli_cal(ClimaX,DistX,EstX,EstreX):-
+departamento(CodD,NombD,_,LengD,ClimaX),
+hotel(_,NombH,DistanciaR,EstreX,_,Doble,Precio,CodD),
+DistanciaR>=DistX,
+Mobilidad is DistanciaR*2.5,
+CostoHotel is (Doble+Precio)*EstX,
+Resultado is Mobilidad+CostoHotel,
+nl,
+hoteles_filtrados_cli_cal(NombD,LengD,ClimaX,DistanciaR,EstreX,NombH,Mobilidad,CostoHotel,Resultado),
+fail.
+
+
+
+%HOTEL CON HABITACION SIMPLE Y SIN VEHICULO
+%SELECCIONAR HABITACION SIMPLE
+seleccionarhotelsimple_cli_cal_sinv(ClimaX,DistX,EstX,EstreX):-
+departamento(CodD,NombD,_,LengD,ClimaX),
+hotel(_,NombH,DistanciaR,EstreX,Simple,_,Precio,CodD),
+DistanciaR>=DistX,
+Mobilidad is 0,
+CostoHotel is (Simple+Precio)*EstX,
+Resultado is Mobilidad+CostoHotel,
+nl,
+hoteles_filtrados_cli_cal(NombD,LengD,ClimaX,DistanciaR,EstreX,NombH,Mobilidad,CostoHotel,Resultado),
+fail.
+
+%SELECCIONAR HABITACION DOBLE
+seleccionarhoteldoble_cli_cal_sinv(ClimaX,DistX,EstX,EstreX):-
+departamento(CodD,NombD,_,LengD,ClimaX),
+hotel(_,NombH,DistanciaR,EstreX,_,Doble,Precio,CodD),
+DistanciaR>=DistX,
+Mobilidad is 0,
+CostoHotel is (Doble+Precio)*EstX,
+Resultado is Mobilidad+CostoHotel,
+nl,
+hoteles_filtrados_cli_cal(NombD,LengD,ClimaX,DistanciaR,EstreX,NombH,Mobilidad,CostoHotel,Resultado),
+fail.
+
+%LISTADO DE OPCIONES FILTRADAS
+hoteles_filtrados_cli_cal(NombD,LengD,ClimaX,DistanciaR,EstrellaR,NombH,Mobilidad,CostoHotel,Resultado):-
+write('HOTELES AJUSTADOS A SU PRESUPUESTO'),
+nl,
+format(
+'Departamento: ~a, Lenguaje: ~a,Clima: ~a, Distancia: ~a, 
+Estrellas: ~a, Hotel: ~a, Mobilidad: ~a,
+Costo Hotel: ~a,Resultado: ~a', 
+[NombD,LengD,ClimaX,DistanciaR,EstrellaR,NombH,Mobilidad,CostoHotel,Resultado]
+),
+nl,
+fail.
+%-------------------------------------------------------------------------------------------------------------------
